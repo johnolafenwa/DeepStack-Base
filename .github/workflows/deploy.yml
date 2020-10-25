@@ -13,11 +13,11 @@ jobs:
     - name: Docker Login
       run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
     - name: Build CPU Base 
-      run: docker build -t deepquestai/deepstack:cpu-${{ github.run_id }} . -f Dockerfile.cpu
+      run: docker build -t deepquestai/deepstack-base:cpu-${{ github.run_id }} . -f Dockerfile.cpu
     - name: Build GPU Base
-      run: docker build -t deepquestai/deepstack:gpu-${{ github.run_id }} . -f Dockerfile.gpu
+      run: docker build -t deepquestai/deepstack-base:gpu-${{ github.run_id }} . -f Dockerfile.gpu
     - name: Push CPU Base
-      run: docker push deepquestai/deepstack:cpu-${{ github.run_id }}
+      run: docker push deepquestai/deepstack-base:cpu-${{ github.run_id }}
     - name: Push GPU Base
-      run: docker push deepquestai/deepstack:gpu-${{ github.run_id }}
+      run: docker push deepquestai/deepstack-base:gpu-${{ github.run_id }}
       
