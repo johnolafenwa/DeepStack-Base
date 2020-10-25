@@ -1,0 +1,25 @@
+name: Deploy Base Images
+on:
+  push:
+    branches: [ master ]
+env:
+  date: $(date +%s)
+jobs:
+  build:
+    name: Build 
+    runs-on: ubuntu-latest 
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
+
+    - name: Docker Login
+      run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
+    - name: Build CPU Base 
+      run: docker build -t deepquestai/deepstack:cpu-${{ env.date }} . -f Dockerfile.cpu
+    - name: Build GPU Base
+      run: docker build -t deepquestai/deepstack:gpu-${{ env.date }} . -f Dockerfile.gpu
+    - name: Push CPU Base
+      run: docker push deepquestai/deepstack:cpu-${{ env.date }}
+    - name: Push GPU Base
+      run: docker push deepquestai/deepstack:gpu-${{ env.date }}
+      
