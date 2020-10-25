@@ -3,7 +3,7 @@ on:
   push:
     branches: [ master ]
 env:
-  date: $(date +%s)
+  date: echo $(date +%s)
 jobs:
   build:
     name: Build 
