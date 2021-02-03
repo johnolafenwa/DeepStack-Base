@@ -10,3 +10,4 @@ RUN apt-get install python3-pip -y
 RUN apt-get install redis-server -y 
 RUN pip3 install --upgrade setuptools pip
 RUN apt-get install libsm6 libxext6 libxrender1 libglib2.0-0 ffmpeg -y
+RUN pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
