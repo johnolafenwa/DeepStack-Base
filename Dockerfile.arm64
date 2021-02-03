@@ -5,8 +5,8 @@ RUN apt-get install redis-server -y
 RUN pip3 install --upgrade setuptools pip
 RUN apt-get install libsm6 libxext6 libxrender1 libglib2.0-0 ffmpeg openmpi-bin libopenmpi-dev -y
 RUN mkdir wheels
-COPY ./torch-1.8.0a0+unknown-cp38-cp38-linux_aarch64.whl /wheels/torch-1.8.0a0+unknown-cp38-cp38-linux_arm64.whl
-COPY ./torchvision-0.9.0a0+c5d6f1f-cp38-cp38-linux_aarch64.whl /wheels/torchvision-0.9.0a0+c5d6f1f-cp38-cp38-linux_arm64.whl
-RUN pip3 install /wheels/torch-1.8.0a0+unknown-cp38-cp38-linux_arm64.whl
-RUN pip3 install /wheels/torchvision-0.9.0a0+c5d6f1f-cp38-cp38-linux_arm64.whl
+COPY ./torch-1.8.0a0+unknown-cp38-cp38-linux_aarch64.whl /wheels/torch-1.8.0a0+unknown-cp38-cp38-any.whl
+COPY ./torchvision-0.9.0a0+c5d6f1f-cp38-cp38-linux_aarch64.whl /wheels/torchvision-0.9.0a0+c5d6f1f-cp38-cp38-any.whl
+RUN pip3 install /wheels/torch-1.8.0a0+unknown-cp38-cp38-any.whl
+RUN pip3 install /wheels/torchvision-0.9.0a0+c5d6f1f-cp38-cp38-any.whl
 RUN rm -rf /wheels
