@@ -49,8 +49,8 @@ RUN pip3 install numpy --verbose
 #  PyTorch v1.4.0 https://nvidia.box.com/shared/static/c3d7vm4gcs9m728j6o5vjay2jdedqb55.whl (torch-1.4.0-cp36-cp36m-linux_aarch64.whl)
 #  PyTorch v1.5.0 https://nvidia.box.com/shared/static/3ibazbiwtkl181n95n9em3wtrca7tdzp.whl (torch-1.5.0-cp36-cp36m-linux_aarch64.whl)
 #
-ARG PYTORCH_URL=https://nvidia.box.com/shared/static/lufbgr3xu2uha40cs9ryq1zn4kxsnogl.whl
-ARG PYTORCH_WHL=torch-1.2.0-cp36-cp36m-linux_aarch64.whl
+ARG PYTORCH_URL=https://nvidia.box.com/shared/static/9eptse6jyly1ggt9axbja2yrmj6pbarc.whl
+ARG PYTORCH_WHL=torch-1.6.0-cp36-cp36m-linux_aarch64.whl
 
 RUN wget --quiet --show-progress --progress=bar:force:noscroll --no-check-certificate ${PYTORCH_URL} -O ${PYTORCH_WHL} && \
     pip3 install ${PYTORCH_WHL} --verbose && \
