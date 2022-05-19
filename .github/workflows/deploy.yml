@@ -16,7 +16,7 @@ jobs:
       run: docker build -t deepquestai/deepstack-base:cpu-${{ github.run_id }} . -f Dockerfile.cpu
     - name: Build GPU CUDA 10.0 Base
       run: docker build -t deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }} . -f Dockerfile.gpu-10_0
-     - name: Build GPU CUDA 10.2 Base
+    - name: Build GPU CUDA 10.2 Base
       run: docker build -t deepquestai/deepstack-base:gpu-cuda102-${{ github.run_id }} . -f Dockerfile.gpu-10_2
     - name: Build GPU CUDA 11.0 Base
       run: docker build -t deepquestai/deepstack-base:gpu-cuda110-${{ github.run_id }} . -f Dockerfile.gpu-11_0
