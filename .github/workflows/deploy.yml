@@ -14,22 +14,33 @@ jobs:
       run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
     - name: Build CPU Base 
       run: docker build -t deepquestai/deepstack-base:cpu-${{ github.run_id }} . -f Dockerfile.cpu
-    - name: Build GPU CUDA 10.0 Base
-      run: docker build -t deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }} . -f Dockerfile.gpu-10_0
-    - name: Build GPU CUDA 10.2 Base
-      run: docker build -t deepquestai/deepstack-base:gpu-cuda102-${{ github.run_id }} . -f Dockerfile.gpu-10_2
-    - name: Build GPU CUDA 11.0 Base
-      run: docker build -t deepquestai/deepstack-base:gpu-cuda110-${{ github.run_id }} . -f Dockerfile.gpu-11_0
-    - name: Build GPU CUDA 11.6 Base
-      run: docker build -t deepquestai/deepstack-base:gpu-cuda116-${{ github.run_id }} . -f Dockerfile.gpu-11_6
     - name: Push CPU Base
       run: docker push deepquestai/deepstack-base:cpu-${{ github.run_id }}
+    - name: Clean CPU Base
+      run: docker image rm -f deepquestai/deepstack-base:cpu-${{ github.run_id }}
+    - name: Build GPU CUDA 10.0 Base
+      run: docker build -t deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }} . -f Dockerfile.gpu-10_0
     - name: Push GPU CUDA 10.0 Base
       run: docker push deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }}
+    - name: Clean CUDA 10.0 Base
+      run: docker image rm -f deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }}
+    - name: Build GPU CUDA 10.2 Base
+      run: docker build -t deepquestai/deepstack-base:gpu-cuda102-${{ github.run_id }} . -f Dockerfile.gpu-10_2
     - name: Push GPU CUDA 10.2 Base
       run: docker push deepquestai/deepstack-base:gpu-cuda102-${{ github.run_id }}
+    - name: Clean CUDA 10.2 Base
+      run: docker image rm -f deepquestai/deepstack-base:gpu-cuda102-${{ github.run_id }}
+    - name: Build GPU CUDA 11.0 Base
+      run: docker build -t deepquestai/deepstack-base:gpu-cuda110-${{ github.run_id }} . -f Dockerfile.gpu-11_0
     - name: Push GPU CUDA 11.0 Base
       run: docker push deepquestai/deepstack-base:gpu-cuda110-${{ github.run_id }}
+    - name: Clean CUDA 11.0 Base
+      run: docker image rm -f deepquestai/deepstack-base:gpu-cuda110-${{ github.run_id }}
+    - name: Build GPU CUDA 11.6 Base
+      run: docker build -t deepquestai/deepstack-base:gpu-cuda116-${{ github.run_id }} . -f Dockerfile.gpu-11_6
     - name: Push GPU CUDA 11.6 Base
       run: docker push deepquestai/deepstack-base:gpu-cuda116-${{ github.run_id }}
+    - name: Clean CUDA 11.6 Base
+      run: docker image rm -f deepquestai/deepstack-base:gpu-cuda116-${{ github.run_id }}
+    
       

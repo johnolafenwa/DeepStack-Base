@@ -14,7 +14,9 @@ jobs:
     - name: Docker Login
       run: docker login --username=${{ secrets.DOCKER_USERNAME }} --password=${{ secrets.DOCKER_PASSWORD }}
     - name: Build CPU Base 
-      run: docker build -t deepquestai/deepstack-base:cpu-${{ github.run_id }} . -f Dockerfile.cpu 
+      run: docker build -t deepquestai/deepstack-base:cpu-${{ github.run_id }} . -f Dockerfile.cpu
+    - name: Clean CPU Base
+      run: docker image rm -f deepquestai/deepstack-base:cpu-${{ github.run_id }} 
     - name: Build GPU CUDA 10.0 Base
       run: docker build -t deepquestai/deepstack-base:gpu-cuda100-${{ github.run_id }} . -f Dockerfile.gpu-10_0
     - name: Clean CUDA 10.0 Base
