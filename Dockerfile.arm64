@@ -6,6 +6,6 @@ ENV TORCH=1.8.1 \
 RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
     && apt-get update -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server libsm6 libxext6 libxrender1 libglib2.0-0 ffmpeg openmpi-bin libopenmpi-dev \
-    && pip3 install --upgrade setuptools pip \
-    && pip3 install torch==${TORCH} torchvision==${TORCHVISION} -f https://download.pytorch.org/whl/torch_stable.html \
+    && pip3 install --no-cache-dir --upgrade setuptools pip \
+    && pip3 install --no-cache-dir torch==${TORCH} torchvision==${TORCHVISION} -f https://download.pytorch.org/whl/torch_stable.html \
     && rm -rf /var/lib/apt/lists/* && apt-get --purge -y autoremove
