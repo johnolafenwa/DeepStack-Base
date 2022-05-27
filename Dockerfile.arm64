@@ -1,7 +1,11 @@
 FROM python:3.7
 
-RUN apt-get update -y
-RUN apt-get install redis-server -y 
-RUN pip3 install --upgrade setuptools pip
-RUN apt-get install libsm6 libxext6 libxrender1 libglib2.0-0 ffmpeg openmpi-bin libopenmpi-dev -y
-RUN pip3 install torch==1.8.1 torchvision==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html
+ENV TORCH=1.8.1 \
+    TORCHVISION=0.9.1
+
+RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
+    && apt-get update -y \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y redis-server libsm6 libxext6 libxrender1 libglib2.0-0 ffmpeg openmpi-bin libopenmpi-dev \
+    && pip3 install --upgrade setuptools pip \
+    && pip3 install torch==${TORCH} torchvision=={TORCHVISION} -f https://download.pytorch.org/whl/torch_stable.html \
+    && rm -rf /var/lib/apt/lists/* && apt-get --purge -y autoremove
